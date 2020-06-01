@@ -1,0 +1,22 @@
+{
+  "name": "functional-javascript-practice",
+  "version": "1.0.0",
+  "description": "### 목차 | Chapter | 내용 | | --- | --- | | 1 | 소개 | | 2 | 일급 함수와 응용형 프로그래밍 | | 3 | 변수 스코프와 클로저 | | 4 | 고차원 함수 | | 5 | 함수로 함수 만들기 | | 6 | 재귀 | | 7 | 순수성, 불변성, 변경 정책 | | 8 | 흐름 기반 프로그래밍 | | 9 | 클래스를 이용하지 않는 프로그래밍 |",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raw-coder/functional-javascript-practice.git"
+  },
+  "author": "raw-coder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raw-coder/functional-javascript-practice/issues"
+  },
+  "homepage": "https://github.com/raw-coder/functional-javascript-practice#readme",
+  "dependencies": {
+    "underscore": "^1.10.2"
+  }
+}
