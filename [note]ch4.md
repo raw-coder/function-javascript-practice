@@ -29,3 +29,8 @@ const g = always(function() {});
 console.log(f() === g());
 ```
  
+ 
+참고 투명성 (Referencial Transparency)
+
+- 자신이 반환할 값과 관련된 인자만을 활용하는 함수
+
