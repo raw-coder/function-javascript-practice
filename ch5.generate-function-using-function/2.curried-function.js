@@ -32,6 +32,7 @@ const divideBy10 = rightCurryDivision(10);
 console.log(divideBy10(2));
 
 
+// ### curry ###
 // 정해지지 않은 수의 인자를 처리하기 위해 구현된 curry function
 function curry(fun) {
   return function(arg) {
@@ -43,6 +44,8 @@ console.log(['11', '11', '11', '11'].map(parseInt)); // [ 11, NaN, 3, 4 ] === [p
 
 console.log(['11', '11', '11', '11'].map(curry(parseInt))); // [ 11, 11, 11, 11 ]
 
+
+// ### curry2 ###
 function curry2(fun) {
   return function(secondArg) {
     return function(firstArg) {
@@ -111,3 +114,39 @@ console.log(rgbToHexString(255, 255, 255));
 
 const blueGreenish = curry3(rgbToHexString)(255)(200);
 console.log(blueGreenish(0));
+
+const greaterThan = curry2(function (lhs, rhs) { return lhs > rhs });
+const lessThan = curry2(function (lhs, rhs) { return lhs < rhs });
+
+const withinRange = checker(
+  validator('arg must be greater than 10', greaterThan(10)),
+  validator('arg must be less than 20', lessThan(20)),
+);
+
+function validator(message, fun) {
+  const f = function() {
+    return fun.apply(fun, arguments);
+  };
+  
+  f['message'] = message;
+  return f;
+}
+
+function checker() {
+  const validators = _.toArray(arguments);
+  
+  return function(obj) {
+    return _.reduce(validators, function(errs, check) {
+      if (check(obj)) {
+        return errs;
+      } else {
+        return _.chain(errs).push(check.message).value();
+      }
+    }, [])
+  };
+}
+
+console.log(withinRange(15));
+console.log(withinRange(1));
+console.log(withinRange(100));
+
