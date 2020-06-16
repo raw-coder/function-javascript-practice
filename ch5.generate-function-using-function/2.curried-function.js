@@ -83,3 +83,31 @@ function songToString(song) {
 const songCount = curry2(_.countBy)(songToString);
 
 console.log(songCount(plays));
+
+function curry3(fun) {
+  return function(last) {
+    return function(middle) {
+      return function(first) {
+        return fun(first, middle, last);
+      }
+    }
+  }
+}
+
+const songsPlayed = curry3(_.uniq)(false)(songToString);
+
+console.log(songsPlayed(plays));
+
+function toHex(n) {
+  const hex = n.toString(16);
+  return (hex.length < 2) ? [0, hex].join('') : hex;
+}
+
+function rgbToHexString(r, g, b) {
+  return ['#', toHex(r), toHex(g), toHex(b)].join('');
+}
+
+console.log(rgbToHexString(255, 255, 255));
+
+const blueGreenish = curry3(rgbToHexString)(255)(200);
+console.log(blueGreenish(0));
