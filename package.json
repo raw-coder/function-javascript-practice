@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/raw-coder/functional-javascript-practice#readme",
   "dependencies": {
-    "underscore": "^1.10.2"
+    "underscore": "^1.12.1"
   }
 }
